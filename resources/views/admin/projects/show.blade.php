@@ -6,8 +6,12 @@
     <h3>Descrizione</h3>
     <p>{{ $project->content }}</p>
     <div>
-       @foreach ($project->technologies as $technology )
-           {{ $technology->name }}
-       @endforeach
+        <ul>
+            @foreach ($project->technologies as $technology )
+               <li> Nome Tecnologia: <strong>{{ $technology->name }}</strong>  </li> 
+               <li> Nome Autore: <strong>{{ $technology->author }}</strong>  </li>
+               <li> Tipo: <strong>{{ $technology->types }}</strong>  </li>
+            @endforeach
+        </ul>
     </div>
 @endsection
