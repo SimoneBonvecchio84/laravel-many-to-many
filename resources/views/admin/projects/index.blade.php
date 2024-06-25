@@ -29,7 +29,7 @@
                 <tr>
                     <th scope="row">{{ $curProject->id }}</th>
                     <td>{{ $curProject->title }}</td>
-                    <td>{{ $curProject->type->name }}</td>
+                    <td>{{ $curProject->type?->name }}</td>
                     <td>{{ $curProject->content }}</td>
                     <td>{{ $curProject->slug }}</td>
                     <td>
