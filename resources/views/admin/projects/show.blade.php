@@ -5,4 +5,9 @@
     <h2>Titolo: {{ $project->title }}</h2>
     <h3>Descrizione</h3>
     <p>{{ $project->content }}</p>
+    <div>
+       @foreach ($project->technologies as $technology )
+           {{ $technology->name }}
+       @endforeach
+    </div>
 @endsection

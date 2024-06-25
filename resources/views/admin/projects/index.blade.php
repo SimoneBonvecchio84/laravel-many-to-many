@@ -17,6 +17,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Titolo</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Tech</th>
                 <th scope="col">Contenuto</th>
                 <th scope="col">Slug</th>
                 <th scope="col">Dettagli</th>
@@ -46,7 +47,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" href=""><i
-                              class="fa-solid fa-trash"></i></button>
+                                    class="fa-solid fa-trash"></i></button>
                         </form>
 
                         {{-- <form action="{{ route('admin.projects.destroy', ['project' => $curProject->slug]) }}"
