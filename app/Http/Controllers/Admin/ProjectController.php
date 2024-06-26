@@ -25,7 +25,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("admin.projects.create");
+        $technologies = Technology::all();
+        return view("admin.projects.create", compact('technologies'));
     }
 
     /**
@@ -38,7 +39,15 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($request->title);
         $project->save();
+       
+
+        //aggiungo i tech selezionati 
+        if($request->has('technologies')){
+            $project->technologies()->attach($request->technologies);
+        }
+
         return redirect()->route('admin.projects.index');
+
     }
 
     /**
