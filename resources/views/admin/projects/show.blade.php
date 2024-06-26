@@ -8,9 +8,11 @@
     <div>
         <ul>
             @foreach ($project->technologies as $technology )
-               <li> Nome Tecnologia: <strong>{{ $technology->name }}</strong>  </li> 
-               <li> Nome Autore: <strong>{{ $technology->author }}</strong>  </li>
-               <li> Tipo: <strong>{{ $technology->types }}</strong>  </li>
+            <div class="py-2">
+                <li> Nome Tecnologia: <strong>{{ $technology->name }}</strong>  </li> 
+                <li> Nome Autore: <strong>{{ $technology->author }}</strong>  </li>
+                <li> Tipo: <strong>{{ $technology->types }}</strong>  </li>
+            </div>
             @endforeach
         </ul>
     </div>

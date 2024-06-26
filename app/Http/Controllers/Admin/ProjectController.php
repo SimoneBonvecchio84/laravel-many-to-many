@@ -43,7 +43,8 @@ class ProjectController extends Controller
 
         //aggiungo i tech selezionati 
         if($request->has('technologies')){
-            $project->technologies()->attach($request->technologies);
+           
+            $project->technologies()->attach($request->technologies); // 
         }
 
         return redirect()->route('admin.projects.index');
@@ -63,7 +64,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'technologies'));
 
     }
 
@@ -72,8 +74,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $data = $request->all();
+        $data = $request->all();     
         $project->update($data);
+        $project->technologies()->sync($request->technologies);
         return redirect()->route('admin.projects.show', $project->slug);
     }
 
