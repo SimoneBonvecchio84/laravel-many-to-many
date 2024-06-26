@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use App\Models\Project;
+use App\Http\Requests\StoreProjectRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -32,9 +33,9 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $project = new Project();
         $project->fill($data);
         $project->slug = Str::slug($request->title);
@@ -43,8 +44,7 @@ class ProjectController extends Controller
 
         //aggiungo i tech selezionati 
         if($request->has('technologies')){
-           
-            $project->technologies()->attach($request->technologies); // 
+            $project->technologies()->attach($request->technologies); // mi mostra le tecnologie che prende dalla tabella teconolgie
         }
 
         return redirect()->route('admin.projects.index');
